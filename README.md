@@ -1,0 +1,2 @@
+# CodeTeachingGame
+npm install
