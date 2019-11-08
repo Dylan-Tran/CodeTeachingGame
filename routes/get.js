@@ -1,13 +1,23 @@
 var express = require('express');
+
 var routes = express.Router();
 
-var problems = ["question1", "question2"]
+let problems = require("../config/problems");
 
 routes.get('/', (req,res)=>{
+    var page = "index";
     //res.sendFile(path.join(__dirname + '/index.html'));
-    res.render('index');
+    res.render('index', {
+        page
+    });
 })
 
+routes.get('/index', (req, res)=>{
+    var page = "index";
+    res.render('index', {
+        page
+    })
+})
 routes.get('/testing', (req, res)=>{
     var page = "testing";
     res.render('testing', {
@@ -16,4 +26,13 @@ routes.get('/testing', (req, res)=>{
     } );
 })
 
+routes.get('/solve', (req, res)=>{
+    var page = "solve"
+    var problemNumber = 1;
+    var text = problems[problemNumber];
+    res.render('solve', {
+        page,
+        text
+    })
+})
 module.exports = routes;

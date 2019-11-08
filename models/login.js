@@ -11,6 +11,10 @@ var Login = new mongoose.Schema({
     },
     password: {
         type: String
+    },
+    stage: {
+      type: Number,
+      index:true
     }
 });
 
