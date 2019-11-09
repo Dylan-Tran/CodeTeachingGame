@@ -1,13 +1,23 @@
 <html>
     <head>
         <title>Solve</title>
-        <link rel ="stylesheet" type = "text/css" href = "nav.css">
+        <link rel ="stylesheet" type = "text/css" href = "nav.css">    
     </head>
     <body>
         <% include ../views/partials/header.ejs %>
         <h1>Find the key to solve this problem</h1>
         <p>
-        <%= text %>
+        <%= map.problem[problemNumber] %>
         </p>
+        
+
+        <form method = "post" action = "<%= map.problemAction[problemNumber]%>">
+        <% for(var i = 0; i < 2; i++){ %>
+                <input type = "text" name ="<%= map.listName[i] %>">
+        <% } %>
+        </form>
+
+
+        
    </body>
 </html>

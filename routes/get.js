@@ -2,11 +2,10 @@ var express = require('express');
 
 var routes = express.Router();
 
-let problems = require("../config/problems");
+let map = require("../config/problems");
 
 routes.get('/', (req,res)=>{
     var page = "index";
-    //res.sendFile(path.join(__dirname + '/index.html'));
     res.render('index', {
         page
     });
@@ -28,11 +27,13 @@ routes.get('/testing', (req, res)=>{
 
 routes.get('/solve', (req, res)=>{
     var page = "solve"
-    var problemNumber = 1;
-    var text = problems[problemNumber];
+    var problemNumber = 0; //From database get level load problem
+    var text = map.problems[problemNumber]; //map of all problems
+    console.log(text);
     res.render('solve', {
         page,
-        text
+        problemNumber,
+        map
     })
 })
 module.exports = routes;
